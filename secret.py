@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from math import sqrt
+from itertools import combinations
 
 
 def secret_additive(n):
@@ -41,3 +42,23 @@ def generate_primes(n):
 
     # remaining numbers are prime
     return [k for k in range(2, len(sieve)) if sieve[k] is True]
+
+
+def is_secret_additive(secret=secret_additive):
+
+    user_input = raw_input('Please input a number: ')
+
+    n = int(user_input)
+
+    # generate list of prime numbers less than n
+    primes = generate_primes(n)
+
+    # determine whether secret is additive for all combinations of primes less than n
+    for x, y in combinations(primes, 2):
+        print 'Checking primes %s and %s' % (x, y)
+        if secret(x+y) != secret(x) + secret(y):
+            print 'Secret is not additive\n'
+            return False
+
+    print 'Secret is additive\n'
+    return True
