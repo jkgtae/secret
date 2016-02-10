@@ -5,6 +5,10 @@ from math import sqrt
 
 def generate_primes(n):
 
+    # check for invalid input
+    if type(n) is not int:
+        raise TypeError('n must be an integer')
+
     # there are no primes less than 2
     if n <= 2:
         return []
