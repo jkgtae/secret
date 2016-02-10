@@ -41,6 +41,13 @@ class IsSecretAdditiveTestCase(unittest.TestCase):
                 output = std_out.getvalue().strip()
                 self.assertEqual(output, 'You must input a number')
 
+    def test_error_msg_when_not_enough_primes(self):
+        with capture_std_out() as std_out:
+            with mock_raw_input(3):
+                is_secret_additive()
+                output = std_out.getvalue().strip()
+                self.assertEqual(output, 'Cannot determine if secret is additive; there is only one prime less than 3')
+
     def test_error_msg_for_negative_number(self):
         with capture_std_out() as std_out:
             with mock_raw_input(-10):
