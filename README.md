@@ -71,7 +71,7 @@ Cannot determine if secret is additive; there are no primes less than -10
 To view which combinations of primes are checked to determine whether secret is additive or non-additive, uncomment line 88 in secret.py:
 
 ```python
-print 'Checking primes %s and %s' % (x, y)`
+print 'Checking primes %s and %s' % (x, y)
 ```
 
 which will result in:
