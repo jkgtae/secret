@@ -50,6 +50,15 @@ def generate_primes(n):
 
 
 def is_secret_additive(secret=secret_additive):
+    """
+    Takes a number passed at the command line and determines if the secret() function is additive for all combinations x
+    and y, where x and y are all prime numbers less than the number passed via the command-line argument.
+
+    :param secret: a function that accepts a single integer parameter and returns an integer (this is an optional
+                   parameter that facilitates testing both additive and non-additive versions of secret; if parameter is
+                   not passed, it defaults to the additive version)
+    :return: True if secret is additive; False if secret is not additive
+    """
 
     user_input = raw_input('Please input a number: ')
 
