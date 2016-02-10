@@ -2,6 +2,8 @@
 
 import unittest
 from contextlib import contextmanager
+import sys
+from StringIO import StringIO
 from secret import *
 
 
@@ -13,6 +15,14 @@ def mock_raw_input(mock):
     yield
     __builtins__.raw_input = original_raw_input
 
+# helper function to test error messages printed to std out
+@contextmanager
+def capture_std_out():
+    original_out = sys.stdout
+    sys.stdout = StringIO()
+    yield sys.stdout
+    sys.stdout = original_out
+
 
 class IsSecretAdditiveTestCase(unittest.TestCase):
 
@@ -23,6 +33,13 @@ class IsSecretAdditiveTestCase(unittest.TestCase):
     def test_with_non_additive_secret(self):
         with mock_raw_input('20'):
             self.assertFalse(is_secret_additive(secret_non_additive))
+
+    def test_error_msg_for_non_numeric_input(self):
+        with capture_std_out() as std_out:
+            with mock_raw_input('foo'):
+                is_secret_additive()
+                output = std_out.getvalue().strip()
+                self.assertEqual(output, 'You must input a number')
 
 
 class GeneratePrimesTestCase(unittest.TestCase):
