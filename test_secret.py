@@ -20,6 +20,10 @@ class IsSecretAdditiveTestCase(unittest.TestCase):
         with mock_raw_input('20'):
             self.assertTrue(is_secret_additive(secret_additive))
 
+    def test_with_non_additive_secret(self):
+        with mock_raw_input('20'):
+            self.assertFalse(is_secret_additive(secret_non_additive))
+
 
 class GeneratePrimesTestCase(unittest.TestCase):
 
