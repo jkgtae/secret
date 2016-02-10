@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import unittest
+from secret import *
 
 
 class GeneratePrimesTestCase(unittest.TestCase):
