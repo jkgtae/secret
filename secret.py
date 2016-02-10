@@ -92,3 +92,8 @@ def is_secret_additive(secret=secret_additive):
 
             print 'Secret is additive\n'
             return True
+
+
+if __name__ == '__main__':
+    is_secret_additive(secret_additive)
+    # is_secret_additive(secret_non_additive)
