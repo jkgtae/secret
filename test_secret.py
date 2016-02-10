@@ -1,13 +1,24 @@
 #!/usr/bin/python
 
 import unittest
+from contextlib import contextmanager
 from secret import *
+
+
+# mock the command line input from the user
+@contextmanager
+def mock_raw_input(mock):
+    original_raw_input = __builtins__.raw_input
+    __builtins__.raw_input = lambda _: mock
+    yield
+    __builtins__.raw_input = original_raw_input
 
 
 class IsSecretAdditiveTestCase(unittest.TestCase):
 
     def test_with_additive_secret(self):
-        self.assertTrue(is_secret_additive(20, secret_additive))
+        with mock_raw_input('20'):
+            self.assertTrue(is_secret_additive(secret_additive))
 
 
 class GeneratePrimesTestCase(unittest.TestCase):
