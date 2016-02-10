@@ -34,6 +34,10 @@ class IsSecretAdditiveTestCase(unittest.TestCase):
         with mock_raw_input('20'):
             self.assertFalse(is_secret_additive(secret_non_additive))
 
+    def test_with_float_input(self):
+        with mock_raw_input('7.6'):
+            self.assertTrue(is_secret_additive)
+
     def test_error_msg_for_non_numeric_input(self):
         with capture_std_out() as std_out:
             with mock_raw_input('foo'):
