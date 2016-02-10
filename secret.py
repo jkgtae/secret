@@ -63,9 +63,11 @@ def is_secret_additive(secret=secret_additive):
         # generate list of prime numbers less than n
         primes = generate_primes(n)
 
-        # handle cases where there are no primes less than n
+        # handle cases where there are too few primes less than n
         if not primes:
             print 'Cannot determine if secret is additive; there are no primes less than %s\n' % user_input
+        elif len(primes) == 1:
+            print 'Cannot determine if secret is additive; there is only one prime less than %s\n' % user_input
         else:
 
             # determine whether secret is additive for all combinations of primes less than n
