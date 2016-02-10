@@ -4,6 +4,12 @@ import unittest
 from secret import *
 
 
+class IsSecretAdditiveTestCase(unittest.TestCase):
+
+    def test_with_additive_secret(self):
+        self.assertTrue(is_secret_additive(20, secret_additive))
+
+
 class GeneratePrimesTestCase(unittest.TestCase):
 
     def test_raise_type_error_for_non_integer(self):
