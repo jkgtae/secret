@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from math import sqrt
+from math import sqrt, ceil
 from itertools import combinations
 
 
@@ -55,10 +55,14 @@ def is_secret_additive(secret=secret_additive):
 
     # check that input is a number
     try:
-        n = int(user_input)
+        n = float(user_input)
     except ValueError:
         print 'You must input a number\n'
     else:
+
+        # convert n to an integer
+        # int truncates toward zero, so we have to use ceil if we want to check the prime 5 for an input of 5.6
+        n = int(ceil(n))
 
         # generate list of prime numbers less than n
         primes = generate_primes(n)
