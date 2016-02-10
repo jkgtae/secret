@@ -9,6 +9,11 @@ def secret_additive(n):
     return n
 
 
+def secret_non_additive(n):
+    """Example of a non-additive secret function"""
+    return n**2
+
+
 def generate_primes(n):
     """
     Return a list of all primes less than n.
