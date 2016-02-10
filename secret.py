@@ -4,6 +4,17 @@ from math import sqrt
 
 
 def generate_primes(n):
+    """
+    Return a list of all primes less than n.
+
+    Uses the Sieve of Eratosthenes (https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) algorithm to generate the list
+    of primes. If we happen to know this function will be used to generate large primes, another algorithm (such as a
+    wheel sieve) would probably be more suitable.
+
+    :param n: an integer
+    :return: list of all primes less than n
+    :raises TypeError: if n is not an integer
+    """
 
     # check for invalid input
     if type(n) is not int:
