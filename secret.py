@@ -85,7 +85,7 @@ def is_secret_additive(secret=secret_additive):
 
             # determine whether secret is additive for all combinations of primes less than n
             for x, y in combinations(primes, 2):
-                print 'Checking primes %s and %s' % (x, y)
+                # print 'Checking primes %s and %s' % (x, y)
                 if secret(x+y) != secret(x) + secret(y):
                     print 'Secret is not additive\n'
                     return False
