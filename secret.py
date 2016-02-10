@@ -3,6 +3,11 @@
 from math import sqrt
 
 
+def secret_additive(n):
+    """Example of an additive secret function"""
+    return n
+
+
 def generate_primes(n):
     """
     Return a list of all primes less than n.
